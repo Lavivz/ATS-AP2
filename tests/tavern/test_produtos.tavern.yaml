@@ -1,0 +1,28 @@
+test_name: Validar API de produtos
+
+stages:
+
+  - name: Buscar produtos
+
+    request:
+      url: http://localhost:5000/produtos
+      method: GET
+
+    response:
+      status_code: 200
+
+      json:
+        - id: !anyint
+          nome: !anystr
+          preco: !anyint
+          estoque: !anyint
+
+        - id: !anyint
+          nome: !anystr
+          preco: !anyint
+          estoque: !anyint
+
+        - id: !anyint
+          nome: !anystr
+          preco: !anyint
+          estoque: !anyint

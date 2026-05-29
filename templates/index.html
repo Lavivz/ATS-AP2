@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="pt-br">
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>GeekStore</title>
+
+    <style>
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .produtos {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            width: 220px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .card h2 {
+            margin-bottom: 10px;
+            color: #222;
+        }
+
+        .preco {
+            font-size: 20px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        button {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 10px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        button:hover {
+            background-color: #4338ca;
+        }
+
+        #mensagem {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <h1>GeekStore</h1>
+
+    <div class="produtos">
+
+        <div class="card">
+
+            <h2>Notebook Gamer</h2>
+
+            <p class="preco">R$ 5000</p>
+
+            <button onclick="comprar(1)">
+                Comprar
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Mouse Gamer</h2>
+
+            <p class="preco">R$ 250</p>
+
+            <button onclick="comprar(2)">
+                Comprar
+            </button>
+
+        </div>
+
+        <div class="card">
+
+            <h2>Teclado Mecânico</h2>
+
+            <p class="preco">R$ 450</p>
+
+            <button onclick="comprar(3)">
+                Comprar
+            </button>
+
+        </div>
+
+    </div>
+
+    <p id="mensagem"></p>
+
+    <script>
+
+        async function comprar(produtoId) {
+
+            const response = await fetch(
+                `/comprar/${produtoId}`,
+                {
+                    method: "POST"
+                }
+            )
+
+            const data = await response.json()
+
+            document
+                .getElementById("mensagem")
+                .innerText = data.mensagem || data.erro
+        }
+
+    </script>
+
+</body>

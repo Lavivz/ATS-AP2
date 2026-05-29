@@ -1,0 +1,9 @@
+flask
+sqlalchemy
+pytest
+pytest-cov
+pytest-bdd
+tavern
+selenium
+webdriver-manager
+requests
